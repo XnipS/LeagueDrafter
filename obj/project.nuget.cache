@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Df/aFcNgQmWChfMSgfdf6ws7EJSka33us6xQaR5MOeOOLyoJgpVcSvhv+z2InRfX1nq+Dx3EW2+bJ9Zxfdo/4g==",
+  "dgSpecHash": "ZYNcxXyy3GAYCgwPZ6pxmpBXre0ma9E8YraEKwLB+/f6jcK5tUWSix6m2+f2xyplxqLif/Ab/d3KqnO0EAQMiQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Luke\\LeagueDrafter\\LeagueDrafter.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Luke\\.nuget\\packages\\htmlagilitypack\\1.11.42\\htmlagilitypack.1.11.42.nupkg.sha512"
+  ],
   "logs": []
 }
