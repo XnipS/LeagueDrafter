@@ -1,0 +1,17 @@
+C:\Users\Luke\LeagueDrafter\bin\Debug\net6.0-windows\LeagueDrafter.exe
+C:\Users\Luke\LeagueDrafter\bin\Debug\net6.0-windows\LeagueDrafter.deps.json
+C:\Users\Luke\LeagueDrafter\bin\Debug\net6.0-windows\LeagueDrafter.runtimeconfig.json
+C:\Users\Luke\LeagueDrafter\bin\Debug\net6.0-windows\LeagueDrafter.dll
+C:\Users\Luke\LeagueDrafter\bin\Debug\net6.0-windows\LeagueDrafter.pdb
+C:\Users\Luke\LeagueDrafter\obj\Debug\net6.0-windows\LeagueDrafter.csproj.AssemblyReference.cache
+C:\Users\Luke\LeagueDrafter\obj\Debug\net6.0-windows\LeagueDrafter.Form1.resources
+C:\Users\Luke\LeagueDrafter\obj\Debug\net6.0-windows\LeagueDrafter.csproj.GenerateResource.cache
+C:\Users\Luke\LeagueDrafter\obj\Debug\net6.0-windows\LeagueDrafter.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Luke\LeagueDrafter\obj\Debug\net6.0-windows\LeagueDrafter.AssemblyInfoInputs.cache
+C:\Users\Luke\LeagueDrafter\obj\Debug\net6.0-windows\LeagueDrafter.AssemblyInfo.cs
+C:\Users\Luke\LeagueDrafter\obj\Debug\net6.0-windows\LeagueDrafter.csproj.CoreCompileInputs.cache
+C:\Users\Luke\LeagueDrafter\obj\Debug\net6.0-windows\LeagueDrafter.dll
+C:\Users\Luke\LeagueDrafter\obj\Debug\net6.0-windows\refint\LeagueDrafter.dll
+C:\Users\Luke\LeagueDrafter\obj\Debug\net6.0-windows\LeagueDrafter.pdb
+C:\Users\Luke\LeagueDrafter\obj\Debug\net6.0-windows\LeagueDrafter.genruntimeconfig.cache
+C:\Users\Luke\LeagueDrafter\obj\Debug\net6.0-windows\ref\LeagueDrafter.dll
