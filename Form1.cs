@@ -14,23 +14,33 @@ namespace LeagueDrafter
 
         private async void button1_Click(object sender, EventArgs e)
         {
+            progressBar1.Visible = true;
             var htmk = await GetHtml();
             ParseHtmlUsingHtmlAgilityPack(htmk);
-            System.Diagnostics.Debug.WriteLine("click");
+            progressBar1.Visible = false;
+            //System.Diagnostics.Debug.WriteLine("click");
         }
 
         private static Task<string> GetHtml()
         {
             var client = new HttpClient();
-            return client.GetStringAsync("https://github.com/XnipS");
+            return client.GetStringAsync("https://u.gg/lol/profile/oc1/xnips/overview");
         }
 
-        private static void ParseHtmlUsingHtmlAgilityPack(string html)
+        private void ParseHtmlUsingHtmlAgilityPack(string html)
         {
+            var text = "";
             var htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(html);
-            var name = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='js-pinned-items-reorder-container']/ol/li/div/div").InnerText;
-            System.Diagnostics.Debug.WriteLine(name);
+
+
+            var level = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='level-header']").InnerText;
+            text += level;
+
+            this.richTextBox1.Text = text;
+
+            // var name = htmlDoc.GetElementbyId("$0").InnerText;
+            //System.Diagnostics.Debug.WriteLine(name);
         }
 
     }
