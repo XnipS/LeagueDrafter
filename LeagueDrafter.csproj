@@ -9,8 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.42" />
-    <PackageReference Include="JObject" Version="1.0.0" />
     <PackageReference Include="RiotSharp" Version="4.0.0" />
   </ItemGroup>
 
