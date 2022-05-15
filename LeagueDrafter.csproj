@@ -6,7 +6,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>scrape.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="scrape.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="RiotSharp" Version="4.0.0" />
