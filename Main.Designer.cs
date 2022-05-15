@@ -1,6 +1,6 @@
 ﻿namespace LeagueDrafter
 {
-    partial class Form1
+    partial class Main
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.Input_Name = new System.Windows.Forms.TextBox();
             this.Query_Button = new System.Windows.Forms.Button();
             this.Query_Output = new System.Windows.Forms.RichTextBox();

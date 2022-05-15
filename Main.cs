@@ -3,31 +3,59 @@ namespace LeagueDrafter
     using Newtonsoft.Json;
     using RiotSharp;
     using System.Threading.Tasks;
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
         //Global
         public string key = "";
         public string version = "";
+        public KeyInput form2 = null;
+        //
+        public void SubmitKey (string k)
+        {
+            form2.Hide();
+            LoadKey(k);
+            
+        }
         //Init
-        public Form1()
+        public Main()
         {
             InitializeComponent();
         }
         //Window loaded
         private void Form1_LoadAsync(object sender, EventArgs e)
         {
+            form2 = new KeyInput();
+            form2.main = this;
+
             Thread.Sleep(1000);
             var x = GetKeyPath();
             try
             {
-                key = File.ReadAllText(x + "key.devkey");
+               var key = File.ReadAllText(x + "key.devkey");
+                LoadKey(key);
+                    } catch {
+                MessageBox.Show("Devkey not detected!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                form2.Show();
+                this.Opacity = 0;
+            }
+        }
+        private void LoadKey (string x)
+        {
+           
+            try
+            {
+                
+                key = x;
+                var api = RiotApi.GetInstance(key, 10, 50);
                 DebugInfo.AppendText("Devkey loaded.");
                 RetrieveRiotData();
+                this.Opacity = 1;
             }
             catch
             {
                 MessageBox.Show("Devkey not detected!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
+                form2.Show();
+                this.Opacity = 0;
             }
         }
         //Setup static data
