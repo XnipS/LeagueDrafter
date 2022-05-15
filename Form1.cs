@@ -1,10 +1,8 @@
 namespace LeagueDrafter
 {
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
     using RiotSharp;
     using System.Threading.Tasks;
-
     public partial class Form1 : Form
     {
         //Global
@@ -18,11 +16,12 @@ namespace LeagueDrafter
         //Window loaded
         private void Form1_LoadAsync(object sender, EventArgs e)
         {
+            Thread.Sleep(1000);
             var x = GetKeyPath();
             try
             {
                 key = File.ReadAllText(x + "key.devkey");
-                System.Diagnostics.Debug.WriteLine("Devkey loaded.");
+                DebugInfo.AppendText("Devkey loaded.");
                 RetrieveRiotData();
             }
             catch
@@ -37,14 +36,13 @@ namespace LeagueDrafter
             try
             {
                 version = await GetCurrentGameVersionAsync();
-                System.Diagnostics.Debug.WriteLine(version);
+                DebugInfo.AppendText("\nStatic data loaded: " + version);
             }
             catch
             {
                 MessageBox.Show("Data Dragon could not be reached!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         //Query button
         private async void button1_Click(object sender, EventArgs e)
         {
@@ -120,7 +118,6 @@ namespace LeagueDrafter
             x = FlipString(x);
             return x;
         }
-
         //Flip string
         private static string FlipString(string s)
         {

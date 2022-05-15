@@ -33,6 +33,7 @@
             this.Query_Button = new System.Windows.Forms.Button();
             this.Query_Output = new System.Windows.Forms.RichTextBox();
             this.Query_Bar = new System.Windows.Forms.ProgressBar();
+            this.DebugInfo = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // Input_Name
@@ -71,11 +72,20 @@
             this.Query_Bar.Value = 100;
             this.Query_Bar.Visible = false;
             // 
+            // DebugInfo
+            // 
+            this.DebugInfo.Location = new System.Drawing.Point(12, 70);
+            this.DebugInfo.Name = "DebugInfo";
+            this.DebugInfo.Size = new System.Drawing.Size(317, 179);
+            this.DebugInfo.TabIndex = 5;
+            this.DebugInfo.Text = "";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 261);
+            this.Controls.Add(this.DebugInfo);
             this.Controls.Add(this.Query_Bar);
             this.Controls.Add(this.Query_Output);
             this.Controls.Add(this.Query_Button);
@@ -97,5 +107,6 @@
         private Button Query_Button;
         private RichTextBox Query_Output;
         private ProgressBar Query_Bar;
+        private RichTextBox DebugInfo;
     }
 }
