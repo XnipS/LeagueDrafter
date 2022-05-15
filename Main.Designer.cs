@@ -34,11 +34,16 @@
             this.Query_Output = new System.Windows.Forms.RichTextBox();
             this.Query_Bar = new System.Windows.Forms.ProgressBar();
             this.DebugInfo = new System.Windows.Forms.RichTextBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // Input_Name
             // 
             this.Input_Name.Location = new System.Drawing.Point(12, 12);
+            this.Input_Name.Multiline = true;
             this.Input_Name.Name = "Input_Name";
             this.Input_Name.PlaceholderText = "Input";
             this.Input_Name.Size = new System.Drawing.Size(317, 23);
@@ -68,8 +73,9 @@
             this.Query_Bar.Location = new System.Drawing.Point(93, 41);
             this.Query_Bar.Name = "Query_Bar";
             this.Query_Bar.Size = new System.Drawing.Size(236, 23);
+            this.Query_Bar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.Query_Bar.TabIndex = 4;
-            this.Query_Bar.Value = 100;
+            this.Query_Bar.Value = 3;
             this.Query_Bar.Visible = false;
             // 
             // DebugInfo
@@ -80,11 +86,47 @@
             this.DebugInfo.TabIndex = 5;
             this.DebugInfo.Text = "";
             // 
-            // Form1
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(578, 12);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(237, 237);
+            this.richTextBox1.TabIndex = 6;
+            this.richTextBox1.Text = "";
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Location = new System.Drawing.Point(821, 12);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(237, 237);
+            this.richTextBox2.TabIndex = 7;
+            this.richTextBox2.Text = "";
+            // 
+            // richTextBox3
+            // 
+            this.richTextBox3.Location = new System.Drawing.Point(1064, 12);
+            this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.Size = new System.Drawing.Size(237, 237);
+            this.richTextBox3.TabIndex = 8;
+            this.richTextBox3.Text = "";
+            // 
+            // richTextBox4
+            // 
+            this.richTextBox4.Location = new System.Drawing.Point(1307, 12);
+            this.richTextBox4.Name = "richTextBox4";
+            this.richTextBox4.Size = new System.Drawing.Size(237, 237);
+            this.richTextBox4.TabIndex = 9;
+            this.richTextBox4.Text = "";
+            // 
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 261);
+            this.ClientSize = new System.Drawing.Size(1556, 261);
+            this.Controls.Add(this.richTextBox4);
+            this.Controls.Add(this.richTextBox3);
+            this.Controls.Add(this.richTextBox2);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.DebugInfo);
             this.Controls.Add(this.Query_Bar);
             this.Controls.Add(this.Query_Output);
@@ -93,7 +135,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "Main";
             this.Text = "League Drafter";
             this.Load += new System.EventHandler(this.Form1_LoadAsync);
             this.ResumeLayout(false);
@@ -108,5 +150,9 @@
         private RichTextBox Query_Output;
         private ProgressBar Query_Bar;
         private RichTextBox DebugInfo;
+        private RichTextBox richTextBox1;
+        private RichTextBox richTextBox2;
+        private RichTextBox richTextBox3;
+        private RichTextBox richTextBox4;
     }
 }

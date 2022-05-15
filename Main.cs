@@ -29,22 +29,23 @@ namespace LeagueDrafter
 
             Thread.Sleep(1000);
             var x = GetKeyPath();
+
             try
             {
                var key = File.ReadAllText(x + "key.devkey");
+                
                 LoadKey(key);
                     } catch {
                 MessageBox.Show("Devkey not detected!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 form2.Show();
                 this.Opacity = 0;
             }
+           // DebugInfo.AppendText(x + "key.devkey");
         }
         private void LoadKey (string x)
-        {
-           
+        {   
             try
             {
-                
                 key = x;
                 var api = RiotApi.GetInstance(key, 10, 50);
                 DebugInfo.AppendText("Devkey loaded.");
@@ -75,21 +76,33 @@ namespace LeagueDrafter
         private async void button1_Click(object sender, EventArgs e)
         {
             var api = RiotApi.GetInstance(key, 10, 50);
-            try
+            string str = Input_Name.Text;
+            str = str.Replace(System.Environment.NewLine, String.Empty);
+            string[] sr = str.Split(" joined the lobby");
+            Query_Bar.Visible = true;
+            for (int i = 0; i < sr.Length; i++)
             {
-                Query_Bar.Visible = true;
-                var summoner = await api.Summoner.GetSummonerByNameAsync(RiotSharp.Misc.Region.Oce, Input_Name.Text);
-                Query_Bar.Visible = false;
-                System.Diagnostics.Debug.WriteLine("Summoner Loaded!");
-                DisplayStats(summoner, api);
+                Query_Bar.Value = (100 / sr.Length) * i;
+                try
+                {
+                   // MessageBox.Show("_" + sr[i] + "_");
+                   if(sr[i] == "")
+                    {
+                        break;
+                    }
+                    var summoner = await api.Summoner.GetSummonerByNameAsync(RiotSharp.Misc.Region.Oce, sr[i]);
+                    DebugInfo.AppendText("\nSummoner " + (i+1) + " Loaded!");
+                    DisplayStats(summoner, api, i);
+                }
+                catch (RiotSharpException ex)
+                {
+                    MessageBox.Show("Riot API Error!\n" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (RiotSharpException ex)
-            {
-                MessageBox.Show("Riot API Error!\n" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            Query_Bar.Visible = false;
         }
         //Print results
-        private async void DisplayStats(RiotSharp.Endpoints.SummonerEndpoint.Summoner summoner, RiotApi api)
+        private async void DisplayStats(RiotSharp.Endpoints.SummonerEndpoint.Summoner summoner, RiotApi api, int num)
         {
             string results = "";
             //Basic Info
@@ -105,7 +118,24 @@ namespace LeagueDrafter
             }
 
             //Output
-            Query_Output.Text = results;
+            switch (num)
+            {
+                case (0):
+                    Query_Output.Text = results;
+                    break;
+                case (1):
+                    richTextBox1.Text = results;
+                    break;
+                case (2):
+                    richTextBox2.Text = results;
+                    break;
+                case (3):
+                    richTextBox3.Text = results;
+                    break;
+                case (4):
+                    richTextBox4.Text = results;
+                    break;
+            }
         }
         //DDragon Champ name from id
         private async Task<string> GetChampNameFromID(string id)
@@ -142,7 +172,7 @@ namespace LeagueDrafter
         {
             var x = AppContext.BaseDirectory;
             x = FlipString(x);
-            x = x.Remove(1, 28);
+            x = x.Remove(1, 25);
             x = FlipString(x);
             return x;
         }
