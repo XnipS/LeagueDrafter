@@ -42,6 +42,7 @@
             this.textBox1.PlaceholderText = "Input";
             this.textBox1.Size = new System.Drawing.Size(317, 23);
             this.textBox1.TabIndex = 0;
+            this.textBox1.Text = "XnipS";
             // 
             // button1
             // 

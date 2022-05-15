@@ -1,47 +1,62 @@
 namespace LeagueDrafter
 {
-    using HtmlAgilityPack;
+    using RiotSharp;
     public partial class Form1 : Form
     {
+        //Global
+        public string key = "";
+        //Init
         public Form1()
         {
             InitializeComponent();
         }
+        //Window loaded
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            var x = GetKeyPath();
+            try
+            {
+                key = File.ReadAllText(x + "key.devkey");
+                System.Diagnostics.Debug.WriteLine("Devkey loaded.");
+            }
+            catch
+            {
+                MessageBox.Show("Devkey not detected!","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
         }
-
+        //Query button
         private async void button1_Click(object sender, EventArgs e)
         {
-            progressBar1.Visible = true;
-            var htmk = await GetHtml();
-            ParseHtmlUsingHtmlAgilityPack(htmk);
-            progressBar1.Visible = false;
-            //System.Diagnostics.Debug.WriteLine("click");
+            var api = RiotApi.GetInstance(key, 10, 50);
+            try
+            {
+                progressBar1.Visible = true;
+                var summoner = await api.Summoner.GetSummonerByNameAsync(RiotSharp.Misc.Region.Oce, textBox1.Text);
+                progressBar1.Visible = false;
+                System.Diagnostics.Debug.WriteLine(summoner.Level);
+            }
+            catch (RiotSharpException ex)
+            {
+                MessageBox.Show("Riot API Error!\n" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private static Task<string> GetHtml()
+        //Clean file path regardless of user
+        private static string GetKeyPath ()
         {
-            var client = new HttpClient();
-            return client.GetStringAsync("https://u.gg/lol/profile/oc1/xnips/overview");
+            var x = AppContext.BaseDirectory;
+            x = FlipString(x);
+            x = x.Remove(1, 28);
+            x = FlipString(x);
+            return x;
         }
 
-        private void ParseHtmlUsingHtmlAgilityPack(string html)
+        //Flip string
+        private static string FlipString(string s)
         {
-            var text = "";
-            var htmlDoc = new HtmlDocument();
-            htmlDoc.LoadHtml(html);
-
-
-            var level = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='level-header']").InnerText;
-            text += level;
-
-            this.richTextBox1.Text = text;
-
-            // var name = htmlDoc.GetElementbyId("$0").InnerText;
-            //System.Diagnostics.Debug.WriteLine(name);
+            char[] charArray = s.ToCharArray();
+            Array.Reverse(charArray);
+            return new string(charArray);
         }
-
     }
 }
