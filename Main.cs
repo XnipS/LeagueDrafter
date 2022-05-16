@@ -109,26 +109,27 @@ namespace LeagueDrafter
             results += "Name: " + summoner.name;
             results += "\nLevel: " + summoner.summonerLevel;
             //results += "\nLast Updated: " + Basic.RelativeTime(Basic.UnixToDateTime(summoner.revisionDate));
-            var matches = await RAPI.GetMatchesByPuuid(key, "americas", summoner.puuid);
-            progressBar2.Value += 1;
-            int wins = 0;
 
-            foreach (var mat in matches)
-            {
-                var sel = await RAPI.GetMatchByMatchId(key, "americas", mat);
-                progressBar2.Value += 1;
-                foreach (var item in sel.info.participants)
-                {
-                    if (item.puuid == summoner.puuid)
-                    {
-                        if (item.win == true)
-                        {
-                            wins++;
-                        }
-                    }
-                }
-            }
-            results += "\nMorale: " + wins + "0%";
+            //var matches = await RAPI.GetMatchesByPuuid(key, "americas", summoner.puuid);
+            //progressBar2.Value += 1;
+            //int wins = 0;
+
+            //foreach (var mat in matches)
+            //{
+            //    var sel = await RAPI.GetMatchByMatchId(key, "americas", mat);
+            //    progressBar2.Value += 1;
+            //    foreach (var item in sel.info.participants)
+            //    {
+            //        if (item.puuid == summoner.puuid)
+            //        {
+            //            if (item.win == true)
+            //            {
+            //                wins++;
+            //            }
+            //        }
+            //    }
+            //}
+            //results += "\nMorale: " + wins + "0%";
 
             var master = await RAPI.GetMasteryByID(key, "OC1", summoner.id);
             progressBar2.Value += 1;
