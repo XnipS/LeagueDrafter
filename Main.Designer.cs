@@ -132,7 +132,7 @@
             // progressBar2
             // 
             this.progressBar2.Location = new System.Drawing.Point(12, 70);
-            this.progressBar2.Maximum = 11;
+            this.progressBar2.Maximum = 12;
             this.progressBar2.Name = "progressBar2";
             this.progressBar2.Size = new System.Drawing.Size(300, 23);
             this.progressBar2.Style = System.Windows.Forms.ProgressBarStyle.Continuous;

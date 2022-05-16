@@ -102,7 +102,7 @@ namespace LeagueDrafter
         private async void DisplayStats(Summoner summoner, int num)
         {
             progressBar2.Visible = true;
-            progressBar2.Value = 0;
+            progressBar2.Value = progressBar2.Maximum;
             //22 total calls
             string results = "";
             //Basic Info
@@ -132,12 +132,11 @@ namespace LeagueDrafter
             //results += "\nMorale: " + wins + "0%";
 
             var master = await RAPI.GetMasteryByID(key, "OC1", summoner.id);
-            progressBar2.Value += 1;
+
             results += "\nMost played: ";
             for (int i = 0; i < 10; i++)
             {
                 results += "\n" + (i + 1) + ": " + await GetChampNameFromID(master[i].championId.ToString()) + " Played: " + Basic.RelativeTime(Basic.UnixToDateTime(master[i].lastPlayTime));
-                progressBar2.Value += 1;
             }
 
             //Output
