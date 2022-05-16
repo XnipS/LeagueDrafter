@@ -64,9 +64,11 @@
             // 
             this.Query_Output.Location = new System.Drawing.Point(335, 12);
             this.Query_Output.Name = "Query_Output";
+            this.Query_Output.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
             this.Query_Output.Size = new System.Drawing.Size(237, 237);
             this.Query_Output.TabIndex = 3;
             this.Query_Output.Text = "";
+            this.Query_Output.WordWrap = false;
             // 
             // Query_Bar
             // 
@@ -90,33 +92,41 @@
             // 
             this.richTextBox1.Location = new System.Drawing.Point(578, 12);
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
             this.richTextBox1.Size = new System.Drawing.Size(237, 237);
             this.richTextBox1.TabIndex = 6;
             this.richTextBox1.Text = "";
+            this.richTextBox1.WordWrap = false;
             // 
             // richTextBox2
             // 
             this.richTextBox2.Location = new System.Drawing.Point(821, 12);
             this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
             this.richTextBox2.Size = new System.Drawing.Size(237, 237);
             this.richTextBox2.TabIndex = 7;
             this.richTextBox2.Text = "";
+            this.richTextBox2.WordWrap = false;
             // 
             // richTextBox3
             // 
             this.richTextBox3.Location = new System.Drawing.Point(1064, 12);
             this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
             this.richTextBox3.Size = new System.Drawing.Size(237, 237);
             this.richTextBox3.TabIndex = 8;
             this.richTextBox3.Text = "";
+            this.richTextBox3.WordWrap = false;
             // 
             // richTextBox4
             // 
             this.richTextBox4.Location = new System.Drawing.Point(1307, 12);
             this.richTextBox4.Name = "richTextBox4";
+            this.richTextBox4.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
             this.richTextBox4.Size = new System.Drawing.Size(237, 237);
             this.richTextBox4.TabIndex = 9;
             this.richTextBox4.Text = "";
+            this.richTextBox4.WordWrap = false;
             // 
             // Main
             // 

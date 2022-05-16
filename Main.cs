@@ -28,7 +28,7 @@ namespace LeagueDrafter
             form2.main = this;
 
             Thread.Sleep(1000);
-            var x = GetKeyPath();
+            var x = Basic.GetKeyPath();
 
             try
             {
@@ -64,7 +64,7 @@ namespace LeagueDrafter
         {
             try
             {
-                version = await GetCurrentGameVersionAsync();
+                version = await Basic.GetCurrentGameVersionAsync();
                 DebugInfo.AppendText("\nStatic data loaded: " + version);
             }
             catch
@@ -110,11 +110,21 @@ namespace LeagueDrafter
             results += "\nLevel: " + summoner.Level;
             results += "\nLast Updated: " + summoner.RevisionDate;
             //Top champs
+
+            //DebugInfo.AppendText ("\n" + summoner.Puuid);
+
+
+           // await api.Match.GetMatchListAsync(RiotSharp.Misc.Region.Americas, summoner.Puuid);
+
+           // await api.Match.GetMatchAsync(RiotSharp.Misc.Region.Americas, );
+            //MessageBox.Show(test.TotalGames.ToString());
+           // DebugInfo.AppendText("\n" + summoner.Puuid);
             var master = await api.ChampionMastery.GetChampionMasteriesAsync(RiotSharp.Misc.Region.Oce, summoner.Id);
+            
             results += "\nMost played: ";
             for (int i = 0; i < 10; i++)
             {
-                results += "\n" + (i + 1) + ": " + await GetChampNameFromID(master[i].ChampionId.ToString());
+                results += "\n" + (i + 1) + ": " + await GetChampNameFromID(master[i].ChampionId.ToString()) + " Last Played: " + master[i].LastPlayTime;
             }
 
             //Output
@@ -156,32 +166,6 @@ namespace LeagueDrafter
             MessageBox.Show("Could not find champion data...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return "Unknown";
         }
-        //DDragon Game Version
-        private async Task<string> GetCurrentGameVersionAsync()
-        {
-            using var client = new HttpClient();
-            string x = await client.GetStringAsync("https://ddragon.leagueoflegends.com/api/versions.json");
-            x = x.Replace("[", "");
-            x = x.Replace("]", "");
-            x = x.Replace("\"", "");
-            var y = x.Split(",");
-            return y[0];
-        }
-        //Clean file path regardless of user
-        private static string GetKeyPath()
-        {
-            var x = AppContext.BaseDirectory;
-            x = FlipString(x);
-            x = x.Remove(1, 25);
-            x = FlipString(x);
-            return x;
-        }
-        //Flip string
-        private static string FlipString(string s)
-        {
-            char[] charArray = s.ToCharArray();
-            Array.Reverse(charArray);
-            return new string(charArray);
-        }
+
     }
 }
