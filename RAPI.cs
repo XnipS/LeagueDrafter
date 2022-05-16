@@ -26,5 +26,22 @@ namespace LeagueDrafter
             var list = JsonConvert.DeserializeObject<List<Mastery>>(x);
             return list;
         }
+
+        public static async Task<List<string>> GetMatchesByPuuid(string devkey, string megaRegion, string puuid)
+        {
+            using var client = new HttpClient();
+            string x = await client.GetStringAsync("https://" + megaRegion + ".api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid +"/ids?start=0&count=10&api_key=" + devkey);
+
+            var list = JsonConvert.DeserializeObject<List<string>>(x);
+            return list;
+        }
+        public static async Task<Data_Match> GetMatchByMatchId(string devkey, string megaRegion, string id)
+        {
+            using var client = new HttpClient();
+            string x = await client.GetStringAsync("https://" + megaRegion + ".api.riotgames.com/lol/match/v5/matches/" + id + "?api_key=" + devkey);
+
+            var list = JsonConvert.DeserializeObject<Data_Match>(x);
+            return list;
+        }
     }
 }

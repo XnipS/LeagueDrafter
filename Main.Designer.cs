@@ -38,6 +38,7 @@
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
+            this.progressBar2 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // Input_Name
@@ -82,9 +83,9 @@
             // 
             // DebugInfo
             // 
-            this.DebugInfo.Location = new System.Drawing.Point(12, 70);
+            this.DebugInfo.Location = new System.Drawing.Point(12, 99);
             this.DebugInfo.Name = "DebugInfo";
-            this.DebugInfo.Size = new System.Drawing.Size(300, 403);
+            this.DebugInfo.Size = new System.Drawing.Size(300, 374);
             this.DebugInfo.TabIndex = 5;
             this.DebugInfo.Text = "";
             // 
@@ -128,11 +129,23 @@
             this.richTextBox4.Text = "";
             this.richTextBox4.WordWrap = false;
             // 
+            // progressBar2
+            // 
+            this.progressBar2.Location = new System.Drawing.Point(12, 70);
+            this.progressBar2.Maximum = 22;
+            this.progressBar2.Name = "progressBar2";
+            this.progressBar2.Size = new System.Drawing.Size(300, 23);
+            this.progressBar2.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar2.TabIndex = 10;
+            this.progressBar2.Value = 3;
+            this.progressBar2.Visible = false;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1854, 485);
+            this.Controls.Add(this.progressBar2);
             this.Controls.Add(this.richTextBox4);
             this.Controls.Add(this.richTextBox3);
             this.Controls.Add(this.richTextBox2);
@@ -164,5 +177,6 @@
         private RichTextBox richTextBox2;
         private RichTextBox richTextBox3;
         private RichTextBox richTextBox4;
+        private ProgressBar progressBar2;
     }
 }

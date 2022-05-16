@@ -101,20 +101,42 @@ namespace LeagueDrafter
         //Print results
         private async void DisplayStats(Summoner summoner, int num)
         {
+            progressBar2.Visible = true;
+            progressBar2.Value = 0;
+            //22 total calls
             string results = "";
             //Basic Info
             results += "Name: " + summoner.name;
             results += "\nLevel: " + summoner.summonerLevel;
             //results += "\nLast Updated: " + Basic.RelativeTime(Basic.UnixToDateTime(summoner.revisionDate));
+            var matches = await RAPI.GetMatchesByPuuid(key, "americas", summoner.puuid);
+            progressBar2.Value += 1;
+            int wins = 0;
 
-
+            foreach (var mat in matches)
+            {
+                var sel = await RAPI.GetMatchByMatchId(key, "americas", mat);
+                progressBar2.Value += 1;
+                foreach (var item in sel.info.participants)
+                {
+                    if (item.puuid == summoner.puuid)
+                    {
+                        if (item.win == true)
+                        {
+                            wins++;
+                        }
+                    }
+                }
+            }
+            results += "\nMorale: " + wins + "0%";
 
             var master = await RAPI.GetMasteryByID(key, "OC1", summoner.id);
-            
+            progressBar2.Value += 1;
             results += "\nMost played: ";
             for (int i = 0; i < 10; i++)
             {
                 results += "\n" + (i + 1) + ": " + await GetChampNameFromID(master[i].championId.ToString()) + " Played: " + Basic.RelativeTime(Basic.UnixToDateTime(master[i].lastPlayTime));
+                progressBar2.Value += 1;
             }
 
             //Output
@@ -136,6 +158,7 @@ namespace LeagueDrafter
                     richTextBox4.Text = results;
                     break;
             }
+            progressBar2.Visible = false;
         }
         //DDragon Champ name from id
         private async Task<string> GetChampNameFromID(string id)
