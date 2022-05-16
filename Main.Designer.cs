@@ -46,7 +46,7 @@
             this.Input_Name.Multiline = true;
             this.Input_Name.Name = "Input_Name";
             this.Input_Name.PlaceholderText = "Input";
-            this.Input_Name.Size = new System.Drawing.Size(317, 23);
+            this.Input_Name.Size = new System.Drawing.Size(300, 23);
             this.Input_Name.TabIndex = 0;
             this.Input_Name.Text = "XnipS";
             // 
@@ -62,10 +62,10 @@
             // 
             // Query_Output
             // 
-            this.Query_Output.Location = new System.Drawing.Point(335, 12);
+            this.Query_Output.Location = new System.Drawing.Point(318, 12);
             this.Query_Output.Name = "Query_Output";
             this.Query_Output.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.Query_Output.Size = new System.Drawing.Size(237, 237);
+            this.Query_Output.Size = new System.Drawing.Size(300, 461);
             this.Query_Output.TabIndex = 3;
             this.Query_Output.Text = "";
             this.Query_Output.WordWrap = false;
@@ -74,7 +74,7 @@
             // 
             this.Query_Bar.Location = new System.Drawing.Point(93, 41);
             this.Query_Bar.Name = "Query_Bar";
-            this.Query_Bar.Size = new System.Drawing.Size(236, 23);
+            this.Query_Bar.Size = new System.Drawing.Size(219, 23);
             this.Query_Bar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.Query_Bar.TabIndex = 4;
             this.Query_Bar.Value = 3;
@@ -84,46 +84,46 @@
             // 
             this.DebugInfo.Location = new System.Drawing.Point(12, 70);
             this.DebugInfo.Name = "DebugInfo";
-            this.DebugInfo.Size = new System.Drawing.Size(317, 179);
+            this.DebugInfo.Size = new System.Drawing.Size(300, 403);
             this.DebugInfo.TabIndex = 5;
             this.DebugInfo.Text = "";
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(578, 12);
+            this.richTextBox1.Location = new System.Drawing.Point(624, 12);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.richTextBox1.Size = new System.Drawing.Size(237, 237);
+            this.richTextBox1.Size = new System.Drawing.Size(300, 461);
             this.richTextBox1.TabIndex = 6;
             this.richTextBox1.Text = "";
             this.richTextBox1.WordWrap = false;
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(821, 12);
+            this.richTextBox2.Location = new System.Drawing.Point(930, 12);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.richTextBox2.Size = new System.Drawing.Size(237, 237);
+            this.richTextBox2.Size = new System.Drawing.Size(300, 461);
             this.richTextBox2.TabIndex = 7;
             this.richTextBox2.Text = "";
             this.richTextBox2.WordWrap = false;
             // 
             // richTextBox3
             // 
-            this.richTextBox3.Location = new System.Drawing.Point(1064, 12);
+            this.richTextBox3.Location = new System.Drawing.Point(1236, 12);
             this.richTextBox3.Name = "richTextBox3";
             this.richTextBox3.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.richTextBox3.Size = new System.Drawing.Size(237, 237);
+            this.richTextBox3.Size = new System.Drawing.Size(300, 461);
             this.richTextBox3.TabIndex = 8;
             this.richTextBox3.Text = "";
             this.richTextBox3.WordWrap = false;
             // 
             // richTextBox4
             // 
-            this.richTextBox4.Location = new System.Drawing.Point(1307, 12);
+            this.richTextBox4.Location = new System.Drawing.Point(1542, 12);
             this.richTextBox4.Name = "richTextBox4";
             this.richTextBox4.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.richTextBox4.Size = new System.Drawing.Size(237, 237);
+            this.richTextBox4.Size = new System.Drawing.Size(300, 461);
             this.richTextBox4.TabIndex = 9;
             this.richTextBox4.Text = "";
             this.richTextBox4.WordWrap = false;
@@ -132,7 +132,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1556, 261);
+            this.ClientSize = new System.Drawing.Size(1854, 485);
             this.Controls.Add(this.richTextBox4);
             this.Controls.Add(this.richTextBox3);
             this.Controls.Add(this.richTextBox2);

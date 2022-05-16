@@ -105,7 +105,7 @@ namespace LeagueDrafter
             //Basic Info
             results += "Name: " + summoner.name;
             results += "\nLevel: " + summoner.summonerLevel;
-            results += "\nLast Updated: " + Basic.UnixToDateTime(summoner.revisionDate);
+            //results += "\nLast Updated: " + Basic.RelativeTime(Basic.UnixToDateTime(summoner.revisionDate));
 
 
 
@@ -114,7 +114,7 @@ namespace LeagueDrafter
             results += "\nMost played: ";
             for (int i = 0; i < 10; i++)
             {
-                results += "\n" + (i + 1) + ": " + await GetChampNameFromID(master[i].championId.ToString()) + " Last Played: " + Basic.UnixToDateTime(master[i].lastPlayTime);
+                results += "\n" + (i + 1) + ": " + await GetChampNameFromID(master[i].championId.ToString()) + " Played: " + Basic.RelativeTime(Basic.UnixToDateTime(master[i].lastPlayTime));
             }
 
             //Output
@@ -140,7 +140,6 @@ namespace LeagueDrafter
         //DDragon Champ name from id
         private async Task<string> GetChampNameFromID(string id)
         {
-            Champion champ;
             using var client = new HttpClient();
             string x = await client.GetStringAsync("https://ddragon.leagueoflegends.com/cdn/" + version + "/data/en_US/champion.json");
 
