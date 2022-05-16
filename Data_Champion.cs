@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LeagueDrafter
 {
-    public class ChampData
+    public class Data_Champion
     {
         public Dictionary<string, Champion> Data { get; set; }
     }

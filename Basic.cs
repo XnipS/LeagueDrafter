@@ -8,6 +8,13 @@ namespace LeagueDrafter
 {
     internal static class Basic
     {
+        public static DateTime UnixToDateTime(long unixTimeStamp)
+        {
+            // Unix timestamp is seconds past epoch
+            DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            dateTime = dateTime.AddSeconds(unixTimeStamp / 1000).ToLocalTime();
+            return dateTime;
+        }
         //DDragon Game Version
         internal static async Task<string> GetCurrentGameVersionAsync()
         {

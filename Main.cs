@@ -1,14 +1,13 @@
 namespace LeagueDrafter
 {
     using Newtonsoft.Json;
-    using RiotSharp;
     using System.Threading.Tasks;
     public partial class Main : Form
     {
         //Global
         public string key = "";
         public string version = "";
-        public KeyInput form2 = null;
+        public KeyInput form2;
         //
         public void SubmitKey (string k)
         {
@@ -47,7 +46,6 @@ namespace LeagueDrafter
             try
             {
                 key = x;
-                var api = RiotApi.GetInstance(key, 10, 50);
                 DebugInfo.AppendText("Devkey loaded.");
                 RetrieveRiotData();
                 this.Opacity = 1;
@@ -75,7 +73,6 @@ namespace LeagueDrafter
         //Query button
         private async void button1_Click(object sender, EventArgs e)
         {
-            var api = RiotApi.GetInstance(key, 10, 50);
             string str = Input_Name.Text;
             str = str.Replace(System.Environment.NewLine, String.Empty);
             string[] sr = str.Split(" joined the lobby");
@@ -90,41 +87,34 @@ namespace LeagueDrafter
                     {
                         break;
                     }
-                    var summoner = await api.Summoner.GetSummonerByNameAsync(RiotSharp.Misc.Region.Oce, sr[i]);
+                    var summoner = await RAPI.GetSummonerByNameAsync(key, "OC1", sr[i]);
                     DebugInfo.AppendText("\nSummoner " + (i+1) + " Loaded!");
-                    DisplayStats(summoner, api, i);
+                    DisplayStats(summoner, i);
                 }
-                catch (RiotSharpException ex)
+                catch 
                 {
-                    MessageBox.Show("Riot API Error!\n" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Riot API Error!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             Query_Bar.Visible = false;
         }
         //Print results
-        private async void DisplayStats(RiotSharp.Endpoints.SummonerEndpoint.Summoner summoner, RiotApi api, int num)
+        private async void DisplayStats(Summoner summoner, int num)
         {
             string results = "";
             //Basic Info
-            results += "Name: " + summoner.Name;
-            results += "\nLevel: " + summoner.Level;
-            results += "\nLast Updated: " + summoner.RevisionDate;
-            //Top champs
-
-            //DebugInfo.AppendText ("\n" + summoner.Puuid);
+            results += "Name: " + summoner.name;
+            results += "\nLevel: " + summoner.summonerLevel;
+            results += "\nLast Updated: " + Basic.UnixToDateTime(summoner.revisionDate);
 
 
-           // await api.Match.GetMatchListAsync(RiotSharp.Misc.Region.Americas, summoner.Puuid);
 
-           // await api.Match.GetMatchAsync(RiotSharp.Misc.Region.Americas, );
-            //MessageBox.Show(test.TotalGames.ToString());
-           // DebugInfo.AppendText("\n" + summoner.Puuid);
-            var master = await api.ChampionMastery.GetChampionMasteriesAsync(RiotSharp.Misc.Region.Oce, summoner.Id);
+            var master = await RAPI.GetMasteryByID(key, "OC1", summoner.id);
             
             results += "\nMost played: ";
             for (int i = 0; i < 10; i++)
             {
-                results += "\n" + (i + 1) + ": " + await GetChampNameFromID(master[i].ChampionId.ToString()) + " Last Played: " + master[i].LastPlayTime;
+                results += "\n" + (i + 1) + ": " + await GetChampNameFromID(master[i].championId.ToString()) + " Last Played: " + Basic.UnixToDateTime(master[i].lastPlayTime);
             }
 
             //Output
@@ -154,7 +144,7 @@ namespace LeagueDrafter
             using var client = new HttpClient();
             string x = await client.GetStringAsync("https://ddragon.leagueoflegends.com/cdn/" + version + "/data/en_US/champion.json");
 
-            var list = JsonConvert.DeserializeObject<ChampData>(x);
+            var list = JsonConvert.DeserializeObject<Data_Champion>(x);
 
             foreach (var pair in list.Data)
             {
